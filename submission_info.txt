@@ -1,0 +1,8 @@
+List the Google Technologies Used (max 256 chars):
+Firebase Firestore
+
+Mention the Google AI Tools Integrated (max 256 chars):
+None
+
+Write a Brief Description of Your Solution (max 100 chars):
+Students upvote confusing FAQs to help admin identify which answers need improvement

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>College FAQ Voting System</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Firebase compat libs (optional) -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+  <script src="firebase.js"></script>
+</head>
+
+<body>
+  <main class="container">
+    <header class="site-header">
+      <h1 class="title">Questions Students Find Most Confusing</h1>
+      <p class="subtitle">Vote once to highlight what needs clearer communication.</p>
+      <div class="info-callout">Higher votes help administration prioritize clarity.</div>
+    </header>
+
+    <section class="controls">
+      <div class="filters" id="filters">
+        <button class="pill active" data-cat="All">All</button>
+        <button class="pill" data-cat="Academics">Academics</button>
+        <button class="pill" data-cat="Exams">Exams</button>
+        <button class="pill" data-cat="Fees">Fees</button>
+        <button class="pill" data-cat="Placements">Placements</button>
+        <button class="pill" data-cat="Administration">Administration</button>
+      </div>
+
+      <div class="sort">
+        <label class="sort-label">Sort:</label>
+        <button id="sortMost" class="sort-btn active" aria-pressed="true">Needs Attention</button>
+        <button id="sortNewest" class="sort-btn" aria-pressed="false">Recently Asked</button>
+      </div>
+    </section>
+
+    <section id="faqList" class="faq-list" aria-live="polite"></section>
+
+    <section class="admin-box">
+      <h2>Add a New FAQ (Admin)</h2>
+      <p class="helper">Added questions appear immediately for students to vote.</p>
+      <form id="adminForm">
+        <div class="form-row">
+          <label>Question
+            <input id="qText" required placeholder="e.g. How do I apply for revaluation?" />
+          </label>
+        </div>
+        <div class="form-row">
+          <label>Category
+            <select id="qCategory">
+              <option value="Academics">Academics</option>
+              <option value="Exams">Exams</option>
+              <option value="Fees">Fees</option>
+              <option value="Placements">Placements</option>
+              <option value="Administration">Administration</option>
+            </select>
+          </label>
+        </div>
+        <div class="form-row">
+          <button type="submit" class="btn">Add FAQ</button>
+        </div>
+      </form>
+      <div class="admin-actions">
+        <button id="loadSamplesBtn" class="btn-outline">Load Sample FAQs</button>
+        <button id="seedFirestoreBtn" class="btn-outline" style="display:none">Seed Firestore with Sample FAQs</button>
+      </div>
+    </section>
+
+    <footer class="footer-note">This page is calm, clarity-first, and institutional in tone.</footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
